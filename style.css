@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+
+.container {
+   height: 100%;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: auto 1fr ;
+}
+
+.header {
+    display: grid;
+}
+
+.header-text {
+    justify-self: center;
+}
+
+
+.game-container {
+    border: solid black;
+    width: 450px;
+    height: 450px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    justify-self: center;
+    align-self: center;
+}
+
+.items {
+    border: solid 1px black;
+}
