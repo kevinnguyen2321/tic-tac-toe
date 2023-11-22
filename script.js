@@ -43,6 +43,7 @@ function createPlayer (name, marker) {
 
 const gameFlow = (function () {
     const {boards} = gameBoard;
+    
     boards.forEach((board) => {
         board.addEventListener('click', (e) => {
             
@@ -59,7 +60,7 @@ const gameFlow = (function () {
                         direction === 'row' ? i * 3 + j: 
                         direction === 'column' ? j * 3 + i:
                         direction === 'diagonalOne' ? j * 4:
-                        // direction ===  'diagonalTwo' ? (2 - j) * 3 + (2 - i) :
+                        direction ===  'diagonalTwo' ? (j + j) + 2:
                         -1;
                         
                         
@@ -85,24 +86,39 @@ const gameFlow = (function () {
 
             // Example usage:
                   if (checkForWin('row') || checkForWin('column') 
-                  || checkForWin('diagonalOne')) {
+                  || checkForWin('diagonalOne') || checkForWin('diagonalTwo')) {
                     alert('Player 1 Wins!')
                     resetGame();
                     // Perform actions when a player wins
+                  } else if (board.textContent === '') {
+                      board.style.fontSize = '8rem'
+                      board.style.textAlign = 'center'
+                      board.textContent = playerMarker
                   }
-                        
-                    board.style.fontSize = '8rem'
-                    board.style.textAlign = 'center'
-                    board.textContent = playerMarker;
+                  
+                  let emptyCells = boards.filter(board => board.textContent === '').length;
 
+                  if (emptyCells > 0) {
+                    const boardIndex = boards.indexOf(board);
                     
-                    let randomNum = Math.floor(Math.random() * 10);
-                        boards[randomNum].style.fontSize = '8rem'
-                        boards[randomNum].style.textAlign = 'center'
-                        boards[randomNum].textContent = computerMarker
-                            
-                            
-                 
+                  
+                  let randomNum;
+                    do {
+                    randomNum = Math.floor(Math.random () * 9);
+                  } while (boards[randomNum]?.textContent !== '');
+                    console.log(`Checking randomNum: ${randomNum}, boardIndex: ${boardIndex}, Cell content: ${boards[randomNum]?.textContent}`);
+                    boards[randomNum].style.fontSize = '8rem'
+                    boards[randomNum].style.textAlign = 'center'
+                    boards[randomNum].textContent = computerMarker
+                } else {
+                  console.log('No empty cells left')
+                  if (!checkForWin('row') && !checkForWin('column') && !checkForWin('diagonalOne') && !checkForWin('diagonalTwo')) {
+                    alert('Tie game!');
+                    resetGame();
+                }
+
+                }
+
                     
         })
     })
