@@ -10,7 +10,18 @@
     <div class="container">
         <div class="header">
             <h1 class="header-text">Tic Tac Toe</h1>
+            <button class="new-game" id="new-btn">New Game</button>
+            
         </div>
+
+        <dialog>
+            <form action="">
+                <label for="name">Player Name</label>
+                <input type="text" id="name">
+                <button class="start-game">Start Game</button>
+            </form>
+        </dialog>
+        
         <div class="game-container">
             <div id="one" class="items"></div>
             <div id="two" class="items"></div>
@@ -22,6 +33,16 @@
             <div id="eight" class="items"></div>
             <div id="nine" class="items"></div>
         </div>
+
+
+        <div class="result-container">
+            <p class="result"></p>
+        </div>
+
+        
+        
+            
+        
     </div>
     
  <script src="script.js"></script>   

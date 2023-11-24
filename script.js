@@ -7,6 +7,16 @@
    const boardSeven = document.getElementById('seven');
    const boardEight = document.getElementById('eight');
    const boardNine = document.getElementById('nine');
+   const resultDisplay = document.querySelector('.result');
+   const newGameBtn = document.getElementById('new-btn');
+   const dialog = document.querySelector('dialog');
+   const startBtn = document.querySelector('.start-game');
+   const nameInput = document.getElementById('name')
+
+   
+   
+   
+   
 
    const gameBoard = {
     boards: [
@@ -32,19 +42,22 @@
     
 
 
-function createPlayer (name, marker) {
-   
-    
-    
+function createPlayer (name,marker) {
+   return {
+    name,
+    marker,
+   }
 }
 
 
 
 
-const gameFlow = (function () {
+
+function gameFlow () {
     const {boards} = gameBoard;
-    
-    boards.forEach((board) => {
+   
+
+      boards.forEach((board) => {
         board.addEventListener('click', (e) => {
             
                 const playerMarker = 'X';
@@ -84,10 +97,10 @@ const gameFlow = (function () {
             
                   
 
-            // Example usage:
+            //Example usage://
                   if (checkForWin('row') || checkForWin('column') 
                   || checkForWin('diagonalOne') || checkForWin('diagonalTwo')) {
-                    alert('Player 1 Wins!')
+                    resultDisplay.textContent = 'Player 1 wins!'
                     resetGame();
                     // Perform actions when a player wins
                   } else if (board.textContent === '') {
@@ -110,14 +123,16 @@ const gameFlow = (function () {
                     boards[randomNum].style.fontSize = '8rem'
                     boards[randomNum].style.textAlign = 'center'
                     boards[randomNum].textContent = computerMarker
+                    
                 } else {
                   console.log('No empty cells left')
                   if (!checkForWin('row') && !checkForWin('column') && !checkForWin('diagonalOne') && !checkForWin('diagonalTwo')) {
-                    alert('Tie game!');
+                    resultDisplay.textContent = 'Tie Game!'
                     resetGame();
                 }
 
                 }
+              
 
                     
         })
@@ -131,9 +146,26 @@ const gameFlow = (function () {
         })
     }
 
+    
+}
+
+// const playerOne = createPlayer('Player 1', 'X')
+const computerPlayer = createPlayer('Computer', 'O')
+
+
+const gameInitializer = (function () {
+newGameBtn.addEventListener('click', (e) => {
+  dialog.showModal();
+})
+
+startBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+  let playerName = nameInput.value;
+
+  createPlayer(playerName)
+  gameFlow (playerName, computerPlayer)
+  dialog.close()
+})
+
 })()
-
-
-
-
 
