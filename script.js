@@ -133,7 +133,7 @@ function gameFlow (player, gameBoard) {
                     // Perform actions when a player wins
                   } else if (board.textContent === '' ) {
                       
-                      board.style.fontSize = '8rem'
+                      board.style.fontSize = '5rem'
                       board.style.textAlign = 'center'
                       board.textContent = playerMarker
                   }
@@ -148,7 +148,7 @@ function gameFlow (player, gameBoard) {
                     do {
                     randomNum = Math.floor(Math.random () * 9);
                   } while (boards[randomNum]?.textContent !== '');
-                    boards[randomNum].style.fontSize = '8rem'
+                    boards[randomNum].style.fontSize = '5rem'
                     boards[randomNum].style.textAlign = 'center'
                     boards[randomNum].textContent = computerMarker
                     
@@ -192,6 +192,7 @@ newGameBtn.addEventListener('click', (e) => {
 // Event listener for reset button//
 resetBtn.addEventListener('click', (e) => {
   gameBoard.resetGame();
+  resultDisplay.textContent = '';
 })
  // Event listener for start button//
 startBtn.addEventListener('click', (e) => {

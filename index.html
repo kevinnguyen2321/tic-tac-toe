@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marhey:wght@600&family=Roboto:wght@300&display=swap" rel="stylesheet">
     <title>Tic-Tac-Toe</title>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1 class="header-text">Tic Tac Toe</h1>
-            <button class="new-game" id="new-btn">New Game</button>
-            <button class="reset-btn">Reset</button>
+            <div class="header-buttons">
+                <button class="new-game" id="new-btn">New Game</button>
+                <button class="reset-btn">Reset</button>
+            </div>
             
         </div>
 
@@ -19,8 +24,10 @@
             <form action="">
                 <label for="name">Player Name</label>
                 <input type="text" id="name">
-                <button class="start-game">Start Game</button>
-                <button class="cancel-btn">Cancel</button>
+                <div class="diag-btns">
+                    <button class="start-game">Start Game</button>
+                    <button class="cancel-btn">Cancel</button>
+                </div>
             </form>
         </dialog>
         
